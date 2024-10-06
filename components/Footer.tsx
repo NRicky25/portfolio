@@ -9,8 +9,8 @@ const Footer = () => {
     <footer className="w-full pt-20 pb-10" id="contact">
       <div className="flex flex-col items-center">
         <h1 className="heading lg:max-w-[45vw]">
-          Elevate your digital presence with{" "}
-          <span className="text-[#ffff99]">expert guidanceour</span>
+          Transform your digital presence with{" "}
+          <span className="text-[#ffff99]">expert guidance</span>
         </h1>
         <p className="text-white-200 md:mt-10 my-5 text-center">
           Let’s connect to explore tailored solutions that drive your success
