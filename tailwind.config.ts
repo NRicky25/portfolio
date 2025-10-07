@@ -1,8 +1,16 @@
 import type { Config } from "tailwindcss";
+// const svgToDataUri = require("mini-svg-data-uri");
+// const colors = require("tailwindcss/colors");
+import svgToDataUri from "mini-svg-data-uri";
+import flattenColorPalette from "tailwindcss/lib/util/flattenColorPalette";
 
-const svgToDataUri = require("mini-svg-data-uri");
-
-const colors = require("tailwindcss/colors");
+function addVariablesForColors({ addBase, theme }: any) {
+  const allColors = flattenColorPalette(theme("colors"));
+  const vars = Object.fromEntries(
+    Object.entries(allColors).map(([k, v]) => [`--${k}`, v])
+  );
+  addBase({ ":root": vars });
+}
 
 const {
   default: flattenColorPalette,
@@ -10,6 +18,9 @@ const {
 
 const config = {
   darkMode: ["class"],
+  future: {
+    hoverOnlyWhenSupported: true,
+  },
   content: [
     "./pages/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",

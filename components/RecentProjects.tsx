@@ -21,7 +21,7 @@ const RecentProjects = () => {
             key={item.id}
           >
             <PinContainer title={item.link} href={item.link}>
-              <div className="relative flex items-center justify-center sm:w-96 w-[80vw] overflow-hidden h-[20vh] lg:h-[30vh] mb-10">
+              {/* <div className="relative flex items-center justify-center sm:w-96 w-[80vw] overflow-hidden h-[20vh] lg:h-[30vh] mb-10">
                 <div
                   className="tracking-tight relative w-full h-full overflow-hidden lg:rounded-3xl"
                   style={{ backgroundColor: "#13162D" }}
@@ -30,10 +30,25 @@ const RecentProjects = () => {
                 </div>
                 <Image
                   width={500}
-                  height={200}
+                  height={400}
                   src={item.img}
                   alt="cover"
                   className="z-10 absolute bottom-0"
+                />
+              </div> */}
+              <div className="relative flex items-center justify-center sm:w-96 w-[80vw] overflow-hidden h-[20vh] lg:h-[30vh] mb-10 rounded-2xl">
+                {/* background layer */}
+                <div
+                  className="absolute inset-0 bg-[#13162D]"
+                  aria-hidden="true"
+                />
+                {/* project image */}
+                <Image
+                  src={item.img}
+                  alt={`${item.title} cover`}
+                  fill
+                  className="object-cover object-center transition-transform duration-500 hover:scale-105"
+                  sizes="(max-width: 640px) 90vw, (max-width: 1024px) 380px, 420px"
                 />
               </div>
 
@@ -74,7 +89,7 @@ const RecentProjects = () => {
 
                 <div className="flex justify-center items-center">
                   <p className="flex lg:text-xl md:text-xs text-sm text-yellow-100">
-                    Check Live Site
+                    GitHub
                   </p>
                   <FaLocationArrow className="ms-3" color="#ffff99" />
                 </div>

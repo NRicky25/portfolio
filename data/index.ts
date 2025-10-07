@@ -46,7 +46,7 @@ export const gridItems = [
 
   {
     id: 5,
-    title: "Currently Internship as fullstack",
+    title: "Currently Internship as Backend Developer at Millionyse",
     description: "",
     imgClassName: "absolute right-0 bottom-0 md:w-96 w-60",
     titleClassName: "justify-center md:justify-start lg:justify-center",
@@ -87,22 +87,77 @@ export const projects = [
     iconLists: ["/re.svg", "/tail.svg", "/ts.svg"],
     link: "https://github.com/NRicky25/portfolio",
   },
+  {
+    id: 3,
+    title: "Anomaly Detection",
+    des: "This project demonstrates an end-to-end Machine Learning solution for detecting fraudulent credit card transactions. It encompasses data preprocessing, model training and optimization, and deployment as a containerized RESTful API. The goal is to identify anomalous transactions that might indicate fraud, leveraging a real-world imbalanced dataset.",
+    img: "/dashboard.png",
+    iconLists: [
+      "/scikit-learn.svg",
+      "/pandas.svg",
+      "/Numpy.svg",
+      "/FastAPI.svg",
+      "/Docker.svg",
+    ],
+    link: "https://github.com/NRicky25/anomaly-detector.git",
+  },
+  {
+    id: 4,
+    title: "Retail Data Platform",
+    des: "This project is a demo data platform architecture built to simulate a retail environment.It demonstrates ingestion, storage, transformation, and analytics using modern data engineering tools.",
+    img: "/airflow.png",
+    iconLists: [
+      "/python.svg",
+      "/Apache Airflow.svg",
+      "/streamlit.svg",
+      "/PostgresSQL.svg",
+      "/Docker.svg",
+    ],
+    link: "https://github.com/NRicky25/retail-data-platform",
+  },
+  {
+    id: 5,
+    title: "Kafka Streaming Pipeline",
+    des: "The system simulates transaction events (purchases by customers) and processes them through a Kafka topic.A consumer application stores both the raw transactions and aggregated per-customer totals in PostgreSQL.",
+    img: "/kafka-pipeline.png",
+    iconLists: [
+      "/java.svg",
+      "/Apache kafka.svg",
+      "/PostgresSQL.svg",
+      "/Docker.svg",
+    ],
+    link: "https://github.com/NRicky25/kafka-pipeline",
+  },
 ];
 
 export const workExperience = [
   {
     id: 1,
-    title: "Frontend & Backend Engineer Intern",
+    title: "Backend Developer Intern",
+    desc: "Building backend services and API endpoints for Sub system. a business directory platform that supports small businesses in creating an online presence and engaging with their communities.",
+    className: "md:col-span-2",
+    thumbnail: "/backend.svg",
+  },
+  {
+    id: 2,
+    title: "Full-Stack Intern",
     desc: "at Selfplusplus Assisted in the development of a web-based platform using React.js, enhancing interactivity.",
     className: "md:col-span-2",
     thumbnail: "/d-ill.svg",
   },
   {
-    id: 2,
+    id: 3,
     title: "Software Engineering Graduate",
     desc: "Completed a degree in Software Engineering, with hands-on experience in full-stack development through academic projects and internships.",
-    className: "md:col-span-2", // change to md:col-span-2
+    className: "md:col-span-2",
     thumbnail: "/software.png",
+  },
+  {
+    id: 4,
+    title: "Research Assistant",
+    desc: "Gathering, cleaning, and analysing data, Designing dashboards and reports",
+    className: "md:col-span-2",
+    thumbnail: "/research.jpg",
   },
 ];
 
