@@ -11,10 +11,12 @@ const Hero = () => {
             <h2 className="uppercase text-3xl tracking-wide text-center text-blue-100 max-w-80"></h2>
             <TextGenerateEffect
               className="text-center text-[40px] md-text-5xl lg:text-7xl"
-              words="Transforming Your Ideas into Seamless Desgin"
+              words="Transforming your ideas into intelligent, seamless solutions"
             />
             <p className="text-center md:tracking-wider mb-4 text-sm md:text-lg lg:text-2xl text-blue-100 mt-5">
-              Hi, I&apos;m Ricky, a Full stack developer.
+              Hi, I&apos;m Ricky, a developer passionate about building robust
+              backends with FastAPI, crafting smart solutions with machine
+              learning, and delivering modern web experiences.
             </p>
           </div>
         </div>
