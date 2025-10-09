@@ -51,13 +51,6 @@ const Experience = () => {
                   {[w.company, w.location].filter(Boolean).join(" · ")}
                 </p>
               )}
-
-              {/* Muted, compact date/period line */}
-              {(date || period) && (
-                <p className="text-xs md:text-sm text-neutral-500 mt-1">
-                  {period || date}
-                </p>
-              )}
             </header>
           </div>
 
