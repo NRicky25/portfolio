@@ -169,7 +169,21 @@ export const projects = [
             },
           ],
         },
+        {
+          heading: "Features",
+          bullets: [
+            "User Authentication: register/login with protected routes",
+            "Product Catalog: category filtering, search, and product detail pages",
+            "Shopping Cart: add/update/remove items with price totals",
+            "Checkout: Stripe-powered secure payments (client secret flow)",
+            "Order History: view past orders and statuses",
+            "Admin Basics: add/edit products, Cloudinary image uploads",
+            "Responsive UI: Tailwind-guided layouts for mobile → desktop",
+            "Notifications: basic toasts for actions & error states",
+          ],
+        },
       ],
+
       tools: [
         "React",
         "Redux",
@@ -286,6 +300,18 @@ export const projects = [
             },
           ],
         },
+        {
+          heading: "Features",
+          bullets: [
+            "Prediction API: FastAPI endpoints for single & batch scoring",
+            "Interactive Docs: Swagger UI (/docs) and ReDoc (/redoc)",
+            "Model Artifacts: joblib-exported model and scalers",
+            "Threshold Tuning: calibrated decision threshold for fraud class",
+            "Validation: Pydantic schemas with robust error responses",
+            "Containerization: Docker image for easy run/deploy",
+            "CI: optional GitHub Actions for lint/build/test",
+          ],
+        },
       ],
 
       tools: [
@@ -388,6 +414,18 @@ export const projects = [
             },
           ],
         },
+        {
+          heading: "Features",
+          bullets: [
+            "Synthetic Ingestion: Python + Faker to generate retail datasets",
+            "Data Warehouse: PostgreSQL with staged → marts layers",
+            "Transformations: dbt models with tests and lineage",
+            "Orchestration: Airflow DAG (generate → load → dbt run/test)",
+            "Analytics: Streamlit dashboard for KPIs & trends",
+            "CI/CD: GitHub Actions for dbt parse & Python lint",
+            "Docs: architecture diagram and lineage screenshots",
+          ],
+        },
       ],
 
       tools: [
@@ -483,6 +521,17 @@ export const projects = [
                 "1–2 weeks — testing, debugging, and Docker environment polish",
               ],
             },
+          ],
+        },
+        {
+          heading: "Features",
+          bullets: [
+            "Kafka Producer: synthetic transaction events (UUID, time, amount, category)",
+            "Kafka Consumer: persistence to PostgreSQL with raw + aggregates",
+            "Real-time Aggregation: per-customer totals and counts",
+            "Configurable Topics: bootstrap servers, partitions, and retention",
+            "Docker Compose: Kafka, Zookeeper, and Postgres for local dev",
+            "Validation: record counts and aggregation checks across components",
           ],
         },
       ],
