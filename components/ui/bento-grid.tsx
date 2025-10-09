@@ -133,22 +133,28 @@ export const BentoGridItem = ({
               </div>
             </div>
           )}
-          {id === 6 && (
-            <div className="flex justify-center gap-2 mt-5 relative">
-              {socialMedia.map((info) => (
-                <a
-                  key={info.id}
-                  href={info.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <div className="w-10 h-10 cursor-pointer flex justify-center items-center backdrop-filter backdrop-blur-lg saturate-180 bg-opacity-75 bg-[#242429] rounded-lg border border-black-300">
-                    <Image src={info.img} alt="icons" width={20} height={20} />
-                  </div>
-                </a>
-              ))}
-            </div>
-          )}
+          {id === 6 &&
+            (() => {
+              const gh = socialMedia.find(
+                (s) => s.url.includes("github.com") || /git/i.test(s.img)
+              );
+              if (!gh) return null;
+              return (
+                <div className="flex justify-center gap-2 mt-5 relative">
+                  <a
+                    href={gh.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Open GitHub profile"
+                    title="GitHub"
+                  >
+                    <div className="w-10 h-10 cursor-pointer flex justify-center items-center backdrop-filter backdrop-blur-lg saturate-180 bg-opacity-75 bg-[#242429] rounded-lg border border-black-300">
+                      <Image src={gh.img} alt="GitHub" width={20} height={20} />
+                    </div>
+                  </a>
+                </div>
+              );
+            })()}
         </div>
       </div>
     </div>

@@ -46,7 +46,7 @@ export const gridItems = [
 
   {
     id: 5,
-    title: "Currently Internship as Backend Developer at Millionyse",
+    title: "Currently working as Backend Developer at Millionyse",
     description: "",
     imgClassName: "absolute right-0 bottom-0 md:w-96 w-60",
     titleClassName: "justify-center md:justify-start lg:justify-center",
@@ -55,7 +55,7 @@ export const gridItems = [
   },
   {
     id: 6,
-    title: "Let's Connect and Learn More About Me",
+    title: "Project Repo",
     description: "",
     imgClassName: "",
     titleClassName: "justify-center md:max-w-full max-w-60 text-center",
@@ -112,31 +112,61 @@ export const projects = [
 
       sections: [
         {
-          heading: "Key Features",
+          heading: "Approach",
           bullets: [
-            "User Authentication: secure registration, login, and session management",
-            "Product Catalog: category browsing, search, and detailed product pages",
-            "Shopping Cart: add, update, and remove items",
-            "Secure Checkout: Stripe integration for payments",
-            "Order Management: order history & order details",
-            "Image Management: Cloudinary for efficient product image hosting and delivery",
-            "Responsive Design: desktop, tablet, and mobile",
-            "Admin Panel: (optional) manage products, orders, and users",
-          ],
-        },
-        {
-          heading: "Tech & Architecture",
-          paragraphs: [
-            "A React/Tailwind frontend communicates with a Node/Express REST API backed by MongoDB. Stripe handles secure payments while Cloudinary serves images. The system is container-/cloud-ready for scalable deployment.",
-          ],
-          bullets: [
-            "Frontend: React, Redux, Tailwind CSS, Vite, HTML5/CSS3",
-            "Backend: Node.js, Express.js, RESTful APIs",
-            "Database: MongoDB (Atlas or local)",
-            "Payments: Stripe",
-            "Media: Cloudinary (images/video management)",
-            "Deployment: AWS EC2 (app hosting), AWS S3 (optional static assets), Route 53 (optional DNS)",
-            "Version Control: Git & GitHub",
+            {
+              text: "Planning & Goals",
+              sub: [
+                "Outlined the MVP scope around a complete commerce flow: browse → product details → cart → checkout → order confirmation",
+                "Focused on functionality first with room for reviews, wishlists, coupons",
+                "Separated buyer vs admin requirements to guide architecture",
+              ],
+            },
+            {
+              text: "System Design & Architecture",
+              sub: [
+                "Frontend: React + Tailwind CSS",
+                "Backend: Node.js + Express (/products, /cart, /orders, /auth)",
+                "Database: MongoDB",
+                "Payments: Stripe (client secret + optional webhook)",
+                "Media: Cloudinary (responsive transforms, CDN)",
+                "Deploy: AWS EC2 (+ Route 53, optional S3), SSL via Nginx",
+              ],
+            },
+            {
+              text: "Implementation Workflow",
+              sub: [
+                "Modeled product, user, order schemas; added seed scripts",
+                "Built/validated APIs first (Postman), then UI flow (catalog → product → cart → checkout → success)",
+                "Integrated Cloudinary in admin; stored public URLs on product docs",
+                "Implemented Stripe Elements + server client-secret; webhook optional",
+              ],
+            },
+            {
+              text: "Testing & Quality Assurance",
+              sub: [
+                "Smoke-tested critical API paths (auth, cart, order)",
+                "Walkthroughs for add-to-cart, checkout, order history",
+                "Performance checks (Cloudinary compression, Lighthouse)",
+                "Stripe dashboard for error visibility",
+              ],
+            },
+            {
+              text: "DevOps & Deployment",
+              sub: [
+                "GitHub flow: feature branches + PRs",
+                "CI: lint/build on push (GitHub Actions)",
+                "Backend on EC2 with PM2 (or Docker); static frontend via EC2/CDN",
+                "Route 53 domain + SSL via Nginx reverse proxy",
+              ],
+            },
+            {
+              text: "Project Duration (Estimate)",
+              sub: [
+                "Part-time: 6–8 weeks for MVP (FE+BE+payments)",
+                "Plus 2–3 weeks for testing, deployment, refinements",
+              ],
+            },
           ],
         },
       ],
@@ -182,66 +212,78 @@ export const projects = [
         fe: "https://github.com/NRicky25/anomaly-frontend", // add later if you create a frontend
       },
 
+      duration: "Part-time (evenings/weekends): 6–8 weeks",
+
       sections: [
         {
-          heading: "Key Features",
+          heading: "Approach",
           bullets: [
-            "Data Preprocessing: feature scaling (Amount, Time) and training set preparation",
-            "ML Model: Random Forest Classifier trained on a highly imbalanced dataset",
-            "Threshold Optimization: tuned for fraud class; achieved F1 ≈ 0.85 (Precision ≈ 0.91, Recall ≈ 0.79)",
-            "RESTful API: FastAPI endpoints for real-time predictions",
-            "Robust Validation: Pydantic models for request schema + clear error responses",
-            "Interactive Docs: Swagger UI (/docs) & ReDoc (/redoc)",
-            "Containerization: Docker image for consistent, portable deploys",
-          ],
-        },
-        {
-          heading: "Tech & Architecture",
-          paragraphs: [
-            "Model development in notebooks, exported artifacts (model + scalers) are loaded by a FastAPI app for inference. The service exposes a /predict endpoint and includes interactive OpenAPI docs. The whole stack is packaged in Docker for local and cloud deployment.",
-          ],
-          bullets: [
-            "Python 3.10",
-            "Machine Learning: scikit-learn, pandas, numpy, joblib",
-            "API Framework: FastAPI, uvicorn, pydantic",
-            "Containerization: Docker",
-            "Version Control: Git & GitHub",
-          ],
-        },
-        {
-          heading: "Project Structure",
-          bullets: [
-            "notebooks/model_training_v1.ipynb — EDA, training, evaluation",
-            "src/main.py — FastAPI application (inference service)",
-            "models/development/ — trained RandomForest + scalers (joblib)",
-            "Dockerfile — API image definition",
-            "requirements.txt — Python deps",
-            "README.md — documentation",
-          ],
-        },
-        {
-          heading: "API Usage",
-          paragraphs: [
-            "After the container is running, open the docs at http://localhost:8000/docs or http://localhost:8000/redoc. Use /predict with a JSON body representing one or more transactions.",
-          ],
-          bullets: [
-            "Root: http://localhost:8000/",
-            "Swagger UI: http://localhost:8000/docs",
-            "ReDoc: http://localhost:8000/redoc",
-          ],
-        },
-        {
-          heading: "Sample Request (single transaction)",
-          paragraphs: [
-            `{
-              "Time": 123.45,
-              "V1": -0.966, "V2": -0.847, "V3": 1.196, "V4": 0.25, "V5": -0.88,
-              "V6": -0.306, "V7": 0.672, "V8": -0.046, "V9": 0.917, "V10": -0.992,
-              "V11": -0.702, "V12": -0.141, "V13": -0.41, "V14": -0.066, "V15": 0.991,
-              "V16": -0.692, "V17": -0.279, "V18": 0.038, "V19": 0.198, "V20": -0.063,
-              "V21": -0.177, "V22": -0.076, "V23": -0.088, "V24": -0.015, "V25": 0.278,
-              "V26": 0.147, "V27": -0.013, "V28": 0.008, "Amount": 50.0
-            }`.trim(),
+            {
+              text: "Planning & Problem Framing",
+              sub: [
+                "Defined the goal: detect fraudulent transactions with high recall while keeping precision practical for review teams",
+                "Identified constraints: severe class imbalance, limited interpretability, need for real-time inference",
+              ],
+            },
+            {
+              text: "Data Preparation",
+              sub: [
+                "Loaded the public credit-card dataset; separated train/validation/test splits",
+                "Scaled key features (Amount, Time) and preserved the anonymized V1–V28 components as-is",
+                "Applied stratified splits to maintain class ratios across sets",
+              ],
+            },
+            {
+              text: "Modeling",
+              sub: [
+                "Started with baseline (Logistic Regression) → moved to RandomForest for non-linear boundaries",
+                "Handled imbalance with class_weight and careful cross-validation",
+                "Tracked metrics beyond accuracy: ROC-AUC, PR-AUC, Precision/Recall/F1 on the fraud class",
+              ],
+            },
+            {
+              text: "Threshold Tuning",
+              sub: [
+                "Optimized the decision threshold for the fraud class (maximize F1 while guarding precision)",
+                "Validated the chosen threshold on a hold-out set to avoid optimistic bias",
+              ],
+            },
+            {
+              text: "API & Contracts",
+              sub: [
+                "Exported the trained model + scalers with joblib",
+                "Designed FastAPI schemas (Pydantic) for single/batch prediction with strict validation",
+                "Exposed `/predict` and documented with Swagger UI & ReDoc",
+              ],
+            },
+            {
+              text: "Packaging & Deployment",
+              sub: [
+                "Containerized the service with Docker for reproducible local and cloud runs",
+                "Environment-driven config for thresholds, model paths, and log levels",
+              ],
+            },
+            {
+              text: "Testing & QA",
+              sub: [
+                "Smoke tests for API routes and schema errors (invalid/missing fields)",
+                "Metric checks to ensure degradation doesn’t slip through (spot-check F1/precision/recall)",
+              ],
+            },
+            {
+              text: "Monitoring & Next Steps",
+              sub: [
+                "Baseline logging for predictions and errors; plan for drift checks on score distributions",
+                "Future: model retraining pipeline, alerting on metric drops, feature importance reports",
+              ],
+            },
+            {
+              text: "Project Duration (Estimate)",
+              sub: [
+                "Part-time (evenings/weekends): 6–8 weeks for MVP (data → model → API → Docker)",
+                "Add 2–4 weeks for monitoring, retraining workflow, and CI hardening",
+              ],
+            },
           ],
         },
       ],
@@ -286,61 +328,64 @@ export const projects = [
 
       sections: [
         {
-          heading: "Features",
+          heading: "Approach",
           bullets: [
-            "Ingestion: synthetic retail datasets with Python & Faker",
-            "Storage: loaded into Postgres (Docker)",
-            "Transformations: dbt models (staging, marts) + data quality tests",
-            "Orchestration: Apache Airflow DAG (daily → generate → load → dbt run/test)",
-            "Visualization: Streamlit dashboard (KPIs, trends, category revenue)",
-            "CI/CD: GitHub Actions (dbt parse + Python lint on every push)",
-            "Docs: architecture diagram, dbt lineage, screenshots",
-          ],
-        },
-        {
-          heading: "Architecture",
-          paragraphs: [
-            "Containerized services for Postgres, Airflow, and Streamlit. A scheduled DAG drives the pipeline: generate synthetic CSVs → load to Postgres → run dbt models/tests → serve curated marts to the dashboard. dbt lineage documents dependencies across models.",
-          ],
-        },
-        {
-          heading: "Quickstart",
-          bullets: [
-            "git clone https://github.com/your-username/retail-data-platform.git",
-            "cd retail-data-platform",
-            "cp .env.example .env",
-            "docker compose up -d  # bring up Postgres + Adminer",
-            "run_add.bat           # generate → load → dbt run/test",
-            "streamlit run dashboard/app.py --server.address=0.0.0.0 --server.port=8501",
-          ],
-        },
-        {
-          heading: "Screenshots",
-          paragraphs: [
-            "Dashboard — Streamlit KPIs and trends",
-            "Airflow DAG — end-to-end pipeline",
-            "dbt Lineage — model dependencies",
-          ],
-        },
-        {
-          heading: "Data Quality (dbt tests)",
-          bullets: [
-            "not_null — IDs and foreign keys",
-            "unique — primary keys",
-            "relationships — fact ↔ dimension integrity",
-            "accepted_values — region, category",
-            "freshness — order_date recency",
-          ],
-        },
-        {
-          heading: "Why This Project?",
-          bullets: [
-            "Reproducible, containerized pipelines",
-            "Orchestrated batch workflows",
-            "Dimensional modeling with dbt",
-            "Automated testing & monitoring",
-            "Serving curated data to analysts/dashboards",
-            "CI/CD for data with GitHub Actions",
+            {
+              text: "Planning & Goals",
+              sub: [
+                "Framed the project as an end-to-end data engineering demo for a retail analytics pipeline",
+                "Defined key objectives: simulate data ingestion → transformation → analytics using modern data stack tools",
+                "Outlined modular architecture to support reproducibility and scalability (Dockerized services)",
+              ],
+            },
+            {
+              text: "Architecture Design",
+              sub: [
+                "Planned containerized setup for Postgres, Airflow, and Streamlit for isolated, reproducible environments",
+                "Chose dbt for SQL-based transformations, testing, and lineage tracking",
+                "Mapped daily orchestration DAG in Airflow to automate ingestion → load → transform → test",
+              ],
+            },
+            {
+              text: "Implementation",
+              sub: [
+                "Developed Python ingestion script using Faker to generate synthetic retail data (customers, products, sales)",
+                "Loaded datasets into Postgres via batch pipeline and validated integrity with dbt tests",
+                "Implemented dbt models (staging + marts) to create curated, analytics-ready tables",
+                "Configured Airflow DAG to automate end-to-end pipeline runs",
+              ],
+            },
+            {
+              text: "Visualization & Analytics",
+              sub: [
+                "Built Streamlit dashboard to visualize KPIs like daily revenue, top categories, and customer segmentation",
+                "Integrated aggregated tables from dbt for real-time metric refreshes",
+                "Ensured dashboard responsiveness and lightweight deployment for demos",
+              ],
+            },
+            {
+              text: "Testing & CI/CD",
+              sub: [
+                "Created dbt test suite: not_null, unique, relationships, and accepted_values constraints",
+                "Automated dbt parse + Python lint on each commit using GitHub Actions",
+                "Used small synthetic datasets for quick regression validation of DAG and models",
+              ],
+            },
+            {
+              text: "Deployment & Documentation",
+              sub: [
+                "Deployed the stack locally via Docker Compose for consistent multi-container orchestration",
+                "Documented architecture with diagrams (Airflow DAG, dbt lineage, Streamlit screenshots)",
+                "Configured environment variables (.env) for database connections and credentials",
+              ],
+            },
+            {
+              text: "Project Duration (Estimate)",
+              sub: [
+                "Part-time (evenings/weekends): 6–8 weeks for full pipeline (data → dbt → Airflow → Streamlit)",
+                "Additional 2–3 weeks for CI/CD integration, documentation, and dashboard polishing",
+              ],
+            },
           ],
         },
       ],
@@ -385,38 +430,59 @@ export const projects = [
 
       sections: [
         {
-          heading: "Features",
+          heading: "Approach",
           bullets: [
-            "Streaming ingestion with Kafka Producer written in Java",
-            "Real-time processing with Kafka Consumer",
-            "Persistent storage of raw and aggregated transactions in PostgreSQL",
-            "Synthetic transaction generation for testing (UUID, timestamps, customer IDs, categories)",
-            "Docker-based local infrastructure for reproducibility",
-            "End-to-end demonstration of event-driven data pipelines",
-          ],
-        },
-        {
-          heading: "Architecture",
-          paragraphs: [
-            "Producer (Java) → Kafka Topic → Consumer (Java) → PostgreSQL",
-            "The producer generates random customer transactions and publishes them to a Kafka topic. The consumer reads these events, inserts them into a `transactions_raw` table, and maintains a `customer_agg` table for aggregated totals.",
-          ],
-        },
-        {
-          heading: "Core Workflow",
-          bullets: [
-            "Producer creates synthetic events with unique IDs, timestamps, and purchase categories.",
-            "Consumer processes messages in real-time and writes to Postgres.",
-            "Aggregation logic maintains customer-level totals and transaction counts.",
-            "PostgreSQL provides durable storage for downstream analysis.",
-          ],
-        },
-        {
-          heading: "Results",
-          bullets: [
-            "End-to-end verification of streaming ingestion and persistence.",
-            "Demonstrated strong understanding of event-driven design.",
-            "Containerized deployment using Docker for consistent local setup.",
+            {
+              text: "Planning & Objectives",
+              sub: [
+                "Planned the project to simulate a real-time data streaming environment using Kafka as the backbone for event-driven communication",
+                "Defined core goal: demonstrate ingestion, processing, and storage of continuous data streams with reproducibility and clarity",
+                "Outlined producer–consumer flow architecture to ensure modularity and ease of testing",
+              ],
+            },
+            {
+              text: "Architecture Design",
+              sub: [
+                "Designed the pipeline around two main components: Kafka Producer and Kafka Consumer, communicating via a common topic",
+                "Kafka Producer: responsible for generating synthetic transaction events (UUID, timestamp, customer ID, category, amount)",
+                "Kafka Consumer: reads each event from the topic, writes raw records into `transactions_raw`, and updates aggregates in `customer_agg`",
+                "Used Docker Compose to spin up Kafka, Zookeeper, and PostgreSQL for a reproducible local setup",
+              ],
+            },
+            {
+              text: "Implementation Strategy",
+              sub: [
+                "Developed producer and consumer as standalone Java applications using the Kafka client library",
+                "Used Gradle for dependency management and build automation",
+                "Implemented robust serialization/deserialization and ensured consumer idempotency for duplicate event handling",
+                "Added configuration files for topic names, partition count, and bootstrap servers to keep environment variables flexible",
+              ],
+            },
+            {
+              text: "Testing & Validation",
+              sub: [
+                "Tested producer output for consistent event schema and message frequency",
+                "Verified consumer processing logic by comparing record counts between Kafka topics and PostgreSQL tables",
+                "Conducted aggregation validation — ensuring customer-level totals matched individual transaction sums",
+              ],
+            },
+            {
+              text: "Deployment & Containerization",
+              sub: [
+                "Containerized the full environment with Docker Compose for one-command setup and teardown",
+                "Validated connectivity between containers (Producer → Kafka → Consumer → Postgres)",
+                "Ensured logs were viewable across services for debugging and performance tuning",
+              ],
+            },
+            {
+              text: "Project Duration (Estimate)",
+              sub: [
+                "Part-time (evenings/weekends): 4–6 weeks total",
+                "1 week — setup & architecture design",
+                "2 weeks — implementation of producer, consumer, and database logic",
+                "1–2 weeks — testing, debugging, and Docker environment polish",
+              ],
+            },
           ],
         },
       ],
@@ -440,6 +506,7 @@ export const projects = [
 export const workExperience = [
   {
     id: 1,
+    date: "September 2025 - Present",
     title: "Backend Developer",
     desc: "Building backend services and API endpoints for Sub system. a business directory platform that supports small businesses in creating an online presence and engaging with their communities.",
     className: "md:col-span-2",
@@ -447,24 +514,27 @@ export const workExperience = [
   },
   {
     id: 2,
+    date: "June 2023 - August 2025",
+    title: "Research Assistant",
+    desc: "Gathering, cleaning, and analysing data, Designing dashboards and reports",
+    className: "md:col-span-2",
+    thumbnail: "/research.jpg",
+  },
+  {
+    id: 3,
+    date: "July 2024 - October 2024",
     title: "Full-Stack Intern",
     desc: "at Selfplusplus Assisted in the development of a web-based platform using React.js, enhancing interactivity.",
     className: "md:col-span-2",
     thumbnail: "/d-ill.svg",
   },
   {
-    id: 3,
+    id: 4,
+    date: "Augest 2020 - November 2022",
     title: "Software Engineering Graduate",
     desc: "Completed a degree in Software Engineering, with hands-on experience in full-stack development through academic projects and internships.",
     className: "md:col-span-2",
     thumbnail: "/software.png",
-  },
-  {
-    id: 4,
-    title: "Research Assistant",
-    desc: "Gathering, cleaning, and analysing data, Designing dashboards and reports",
-    className: "md:col-span-2",
-    thumbnail: "/research.jpg",
   },
 ];
 

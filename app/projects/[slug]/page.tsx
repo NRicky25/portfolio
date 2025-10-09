@@ -77,6 +77,13 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
         </section>
       )}
 
+      {d?.duration && (
+        <section className="mt-10 space-y-4 text-gray-300 leading-relaxed">
+          <h2 className="text-xl font-semibold">Project Duration (Estimate)</h2>
+          <p>{d.duration}</p>
+        </section>
+      )}
+
       {/* Repositories */}
       {d?.repos && (d.repos.fe || d.repos.be) ? (
         <section className="mt-10 text-gray-300">
@@ -120,16 +127,33 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
               className="mt-10 text-gray-300 leading-relaxed"
             >
               <h2 className="text-xl font-semibold">{s.heading}</h2>
+
+              {/* Paragraphs */}
               {s.paragraphs?.map((p, i) => (
                 <p key={i} className="mt-3">
                   {p}
                 </p>
               ))}
+
+              {/* Bullets (with optional nested sub-bullets) */}
               {s.bullets?.length ? (
-                <ul className="mt-3 list-disc pl-6 space-y-1">
-                  {s.bullets.map((b, i) => (
-                    <li key={i}>{b}</li>
-                  ))}
+                <ul className="mt-3 list-disc pl-6 space-y-2">
+                  {s.bullets.map((b, i) =>
+                    typeof b === "string" ? (
+                      <li key={i}>{b}</li>
+                    ) : (
+                      <li key={i}>
+                        {b.text}
+                        {b.sub && b.sub.length > 0 && (
+                          <ul className="list-[circle] pl-6 mt-1 space-y-1 text-sm text-gray-400">
+                            {b.sub.map((sb, j) => (
+                              <li key={j}>{sb}</li>
+                            ))}
+                          </ul>
+                        )}
+                      </li>
+                    )
+                  )}
                 </ul>
               ) : null}
             </section>
