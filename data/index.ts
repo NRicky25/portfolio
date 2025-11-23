@@ -88,27 +88,29 @@ export type ProjectDetail = {
 export const projects = [
   {
     id: 1,
-    slug: "ecommerce-website",
-    title: "E-commernce Website",
-    des: "A fully responsive e-commerce platform with seamless user experience, featuring dynamic product listings, secure payment integration, and a modern design",
-    img: "/queen-shop.png",
+    slug: "financeflow-personal-finance-tracker",
+    title: "FinanceFlow — Personal Finance Tracker",
+    des: "A full-stack personal finance platform that lets users track expenses, categories, and reports, with a scalable FastAPI backend, Firestore storage, and a modern React frontend.",
+    img: "/financeflow.png",
     iconLists: [
-      "/nodejs.svg",
+      "/FastAPI.svg",
+      "/firebase-icon.svg",
       "/re.svg",
-      "/tail.svg",
-      "/javascript.svg",
-      "/mongodb.svg",
+      "/typescriptlang-icon.svg",
+      "/Docker.svg",
     ],
-    link: "/projects/ecommerce-website",
+    link: "/projects/financeflow-personal-finance-tracker",
     details: {
       brief:
-        "Queen Shop is a full-stack e-commerce application designed to provide a seamless shopping experience. It demonstrates a robust backend, a dynamic frontend, secure payment processing, and scalable cloud deployment—covering the workflow from product browsing to order fulfillment.",
+        "FinanceFlow is a full-stack personal finance tracker that helps users manage expenses, categories, budgets, and financial insights. It’s built with a production-style FastAPI backend, Firestore as the NoSQL database, and a React frontend, focusing on clean architecture, secure auth, and cloud deployment.",
 
-      // add repo URLs if/when you have them:
       repos: {
-        fe: "https://github.com/NRicky25/queen-shop",
-        be: "https://github.com/NRicky25/queen-shop",
+        be: "https://github.com/DreamRootLabs/FinanceFlow--BE",
+        fe: "https://financeflow-fe.netlify.app/",
       },
+
+      duration:
+        "In progress; built part-time alongside internship and other projects.",
 
       sections: [
         {
@@ -117,54 +119,51 @@ export const projects = [
             {
               text: "Planning & Goals",
               sub: [
-                "Outlined the MVP scope around a complete commerce flow: browse → product details → cart → checkout → order confirmation",
-                "Focused on functionality first with room for reviews, wishlists, coupons",
-                "Separated buyer vs admin requirements to guide architecture",
+                "Defined the core workflow around tracking daily spending, categories, and summaries that actually help users see where their money goes.",
+                "Designed the app to feel like a lightweight SaaS product, not a toy script.",
+                "Planned for future features: budgets, recurring transactions, and insights dashboards.",
               ],
             },
             {
               text: "System Design & Architecture",
               sub: [
-                "Frontend: React + Tailwind CSS",
-                "Backend: Node.js + Express (/products, /cart, /orders, /auth)",
-                "Database: MongoDB",
-                "Payments: Stripe (client secret + optional webhook)",
-                "Media: Cloudinary (responsive transforms, CDN)",
-                "Deploy: AWS EC2 (+ Route 53, optional S3), SSL via Nginx",
+                "Backend: FastAPI with a clear layering: api/ → services/ → repos/ → models/.",
+                "Database: Google Firestore (NoSQL) with user-scoped collections for categories and transactions.",
+                "Auth: JWT-based authentication with support for demo users (no signup friction).",
+                "Frontend: React + Vite with Axios API client and persistent auth token handling.",
               ],
             },
             {
               text: "Implementation Workflow",
               sub: [
-                "Modeled product, user, order schemas; added seed scripts",
-                "Built/validated APIs first (Postman), then UI flow (catalog → product → cart → checkout → success)",
-                "Integrated Cloudinary in admin; stored public URLs on product docs",
-                "Implemented Stripe Elements + server client-secret; webhook optional",
+                "Started from the data model: users, categories, transactions, and reports.",
+                "Implemented REST APIs for CRUD on categories and transactions, plus reporting endpoints.",
+                "Used Pydantic schemas for strict request/response validation and clear API contracts.",
+                "Integrated the frontend with a centralized Axios instance and protected routes.",
+              ],
+            },
+            {
+              text: "Demo Mode & Onboarding",
+              sub: [
+                "Implemented a Demo Mode login that returns a short-lived JWT and demo user ID.",
+                "On first demo login, auto-seeds default categories (Food, Rent, Transport, etc.).",
+                "Creates sample transactions so users immediately see charts and tables populated.",
+              ],
+            },
+            {
+              text: "Deployment & Environments",
+              sub: [
+                "Containerized the backend with Docker for reproducible local and cloud runs.",
+                "Deployed the API to Google Cloud Run using service accounts and env vars.",
+                "Separated local vs production configs via environment variables (origins, keys, project IDs).",
               ],
             },
             {
               text: "Testing & Quality Assurance",
               sub: [
-                "Smoke-tested critical API paths (auth, cart, order)",
-                "Walkthroughs for add-to-cart, checkout, order history",
-                "Performance checks (Cloudinary compression, Lighthouse)",
-                "Stripe dashboard for error visibility",
-              ],
-            },
-            {
-              text: "DevOps & Deployment",
-              sub: [
-                "GitHub flow: feature branches + PRs",
-                "CI: lint/build on push (GitHub Actions)",
-                "Backend on EC2 with PM2 (or Docker); static frontend via EC2/CDN",
-                "Route 53 domain + SSL via Nginx reverse proxy",
-              ],
-            },
-            {
-              text: "Project Duration (Estimate)",
-              sub: [
-                "Part-time: 6–8 weeks for MVP (FE+BE+payments)",
-                "Plus 2–3 weeks for testing, deployment, refinements",
+                "Smoke-tested core endpoints: auth, categories, transactions, and reports.",
+                "Verified CORS behaviour between local frontend and Cloud Run backend.",
+                "Manual UX walkthroughs: first-time demo user → add category → add transaction → view reports.",
               ],
             },
           ],
@@ -172,36 +171,37 @@ export const projects = [
         {
           heading: "Features",
           bullets: [
-            "User Authentication: register/login with protected routes",
-            "Product Catalog: category filtering, search, and product detail pages",
-            "Shopping Cart: add/update/remove items with price totals",
-            "Checkout: Stripe-powered secure payments (client secret flow)",
-            "Order History: view past orders and statuses",
-            "Admin Basics: add/edit products, Cloudinary image uploads",
-            "Responsive UI: Tailwind-guided layouts for mobile → desktop",
-            "Notifications: basic toasts for actions & error states",
+            "User Authentication: JWT-based auth with standard users and demo users.",
+            "Categories: Create, edit, and delete expense categories linked to each user.",
+            "Transactions: Add income/expense records with amount, date, and category.",
+            "Reports & Summaries: Simple spending summaries by category and date range.",
+            "Demo Mode: One-click demo login with pre-seeded data for instant exploration.",
+            "Cloud-Hosted API: FastAPI backend running on Google Cloud Run.",
+            "Secure API Integration: Axios client with token injection and CORS-safe configuration.",
+            "Extensible Architecture: Service/repo pattern ready for future features like budgets and exports.",
           ],
         },
       ],
 
       tools: [
+        "Python",
+        "FastAPI",
+        "Pydantic",
+        "Google Firestore",
+        "Firebase Admin SDK",
         "React",
-        "Redux",
-        "Tailwind CSS",
+        "TypeScript",
         "Vite",
-        "Node.js",
-        "Express.js",
-        "MongoDB",
-        "Stripe",
-        "Cloudinary",
-        "AWS EC2",
-        "(Optional) AWS S3",
-        "(Optional) Route 53",
+        "Axios",
+        "Docker",
+        "Google Cloud Run",
         "Git",
         "GitHub",
+        "Loguru",
       ],
     },
   },
+
   {
     id: 2,
     slug: "anomaly-detector",
@@ -548,6 +548,122 @@ export const projects = [
 
       // Optional screenshots if you have them:
       // gallery: ["/shots/kafka-1.png","/shots/kafka-2.png"],
+    },
+  },
+  {
+    id: 5,
+    slug: "ecommerce-website",
+    title: "E-commernce Website",
+    des: "A fully responsive e-commerce platform with seamless user experience, featuring dynamic product listings, secure payment integration, and a modern design",
+    img: "/queen-shop.png",
+    iconLists: [
+      "/nodejs.svg",
+      "/re.svg",
+      "/tail.svg",
+      "/javascript.svg",
+      "/mongodb.svg",
+    ],
+    link: "/projects/ecommerce-website",
+    details: {
+      brief:
+        "Queen Shop is a full-stack e-commerce application designed to provide a seamless shopping experience. It demonstrates a robust backend, a dynamic frontend, secure payment processing, and scalable cloud deployment—covering the workflow from product browsing to order fulfillment.",
+
+      // add repo URLs if/when you have them:
+      repos: {
+        fe: "https://github.com/NRicky25/queen-shop",
+        be: "https://github.com/NRicky25/queen-shop",
+      },
+
+      sections: [
+        {
+          heading: "Approach",
+          bullets: [
+            {
+              text: "Planning & Goals",
+              sub: [
+                "Outlined the MVP scope around a complete commerce flow: browse → product details → cart → checkout → order confirmation",
+                "Focused on functionality first with room for reviews, wishlists, coupons",
+                "Separated buyer vs admin requirements to guide architecture",
+              ],
+            },
+            {
+              text: "System Design & Architecture",
+              sub: [
+                "Frontend: React + Tailwind CSS",
+                "Backend: Node.js + Express (/products, /cart, /orders, /auth)",
+                "Database: MongoDB",
+                "Payments: Stripe (client secret + optional webhook)",
+                "Media: Cloudinary (responsive transforms, CDN)",
+                "Deploy: AWS EC2 (+ Route 53, optional S3), SSL via Nginx",
+              ],
+            },
+            {
+              text: "Implementation Workflow",
+              sub: [
+                "Modeled product, user, order schemas; added seed scripts",
+                "Built/validated APIs first (Postman), then UI flow (catalog → product → cart → checkout → success)",
+                "Integrated Cloudinary in admin; stored public URLs on product docs",
+                "Implemented Stripe Elements + server client-secret; webhook optional",
+              ],
+            },
+            {
+              text: "Testing & Quality Assurance",
+              sub: [
+                "Smoke-tested critical API paths (auth, cart, order)",
+                "Walkthroughs for add-to-cart, checkout, order history",
+                "Performance checks (Cloudinary compression, Lighthouse)",
+                "Stripe dashboard for error visibility",
+              ],
+            },
+            {
+              text: "DevOps & Deployment",
+              sub: [
+                "GitHub flow: feature branches + PRs",
+                "CI: lint/build on push (GitHub Actions)",
+                "Backend on EC2 with PM2 (or Docker); static frontend via EC2/CDN",
+                "Route 53 domain + SSL via Nginx reverse proxy",
+              ],
+            },
+            {
+              text: "Project Duration (Estimate)",
+              sub: [
+                "Part-time: 6–8 weeks for MVP (FE+BE+payments)",
+                "Plus 2–3 weeks for testing, deployment, refinements",
+              ],
+            },
+          ],
+        },
+        {
+          heading: "Features",
+          bullets: [
+            "User Authentication: register/login with protected routes",
+            "Product Catalog: category filtering, search, and product detail pages",
+            "Shopping Cart: add/update/remove items with price totals",
+            "Checkout: Stripe-powered secure payments (client secret flow)",
+            "Order History: view past orders and statuses",
+            "Admin Basics: add/edit products, Cloudinary image uploads",
+            "Responsive UI: Tailwind-guided layouts for mobile → desktop",
+            "Notifications: basic toasts for actions & error states",
+          ],
+        },
+      ],
+
+      tools: [
+        "React",
+        "Redux",
+        "Tailwind CSS",
+        "Vite",
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "Stripe",
+        "Cloudinary",
+        "AWS EC2",
+        "(Optional) AWS S3",
+        "(Optional) Route 53",
+        "Git",
+        "GitHub",
+      ],
     },
   },
 ];

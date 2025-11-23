@@ -1,7 +1,6 @@
 "use client";
 
 import { FaLocationArrow } from "react-icons/fa6";
-
 import { projects } from "@/data";
 import { PinContainer } from "./ui/3d-pin";
 import Image from "next/image";
@@ -13,35 +12,22 @@ const RecentProjects = () => {
         Highlights from my{" "}
         <span className="text-yellow-100 block ">recent projects</span>
       </h1>
-      <div className="flex flex-wrap items-center justify-center p-4 gap-16 mt-10">
-        {" "}
+
+      {/* FIXED SPACING HERE */}
+      <div className="flex flex-wrap items-center justify-center p-4 gap-x-16 gap-y-24 mt-10">
         {projects.map((item) => (
           <div
             className="lg:min-h-[32.5rem] h-[25rem] flex items-center justify-center sm:w-96 w-[80vw]"
             key={item.id}
           >
             <PinContainer title={item.link} href={item.link}>
-              {/* <div className="relative flex items-center justify-center sm:w-96 w-[80vw] overflow-hidden h-[20vh] lg:h-[30vh] mb-10">
-                <div
-                  className="tracking-tight relative w-full h-full overflow-hidden lg:rounded-3xl"
-                  style={{ backgroundColor: "#13162D" }}
-                >
-                  <Image width={200} height={200} src="/bg.png" alt="bgimg" />
-                </div>
-                <Image
-                  width={500}
-                  height={400}
-                  src={item.img}
-                  alt="cover"
-                  className="z-10 absolute bottom-0"
-                />
-              </div> */}
               <div className="relative flex items-center justify-center sm:w-96 w-[80vw] overflow-hidden h-[20vh] lg:h-[30vh] mb-10 rounded-2xl">
                 {/* background layer */}
                 <div
                   className="absolute inset-0 bg-[#13162D]"
                   aria-hidden="true"
                 />
+
                 {/* project image */}
                 <Image
                   src={item.img}
@@ -52,10 +38,12 @@ const RecentProjects = () => {
                 />
               </div>
 
+              {/* Title */}
               <h1 className="font-bold lg:text-2xl md:text-xl text-base line-clamp-1">
                 {item.title}
               </h1>
 
+              {/* Description */}
               <p
                 className="lg:text-xl lg:font-normal font-light text-sm line-clamp-3"
                 style={{
@@ -66,6 +54,7 @@ const RecentProjects = () => {
                 {item.des}
               </p>
 
+              {/* Icons + Details */}
               <div className="flex items-center justify-between mt-7 mb-3">
                 <div className="flex items-center">
                   {item.iconLists.map((icon, index) => (
@@ -80,7 +69,7 @@ const RecentProjects = () => {
                         width={200}
                         height={200}
                         src={icon}
-                        alt="icon5"
+                        alt="icon"
                         className="p-2"
                       />
                     </div>
