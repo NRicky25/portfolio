@@ -204,98 +204,68 @@ export const projects = [
 
   {
     id: 2,
-    slug: "anomaly-detector",
-    title: "Anomaly Detection",
-    des: "This project demonstrates an end-to-end Machine Learning solution for detecting fraudulent credit card transactions. It encompasses data preprocessing, model training and optimization, and deployment as a containerized RESTful API. The goal is to identify anomalous transactions that might indicate fraud, leveraging a real-world imbalanced dataset.",
-    img: "/dashboard.png",
+    slug: "invoice-saas",
+    title: "Invoice Management SaaS (Xero-inspired)",
+    des: "A multi-tenant invoicing SaaS inspired by Xero. Users can create invoices, manage contacts, generate invoices from templates, preview PDFs, and control editing via Draft/Sent/Paid states with clean, reusable UI components.",
+    img: "/invoice-saas.png",
     iconLists: [
-      "/scikit-learn.svg",
-      "/pandas.svg",
-      "/Numpy.svg",
-      "/FastAPI.svg",
-      "/Docker.svg",
+      "/re.svg",
+      "/ts.svg",
+      "/next.svg",
+      "/tail.svg",
+      "/supabase-icon.svg",
     ],
-    // link: "https://github.com/NRicky25/anomaly-detector.git",
-    link: "/projects/anomaly-detector",
+    link: "/projects/invoice-saas",
+
     details: {
       brief:
-        "This project detects fraudulent credit card transactions using an end-to-end ML workflow: preprocessing, model training/optimization, and deployment as a containerized REST API. It targets real-world class imbalance and optimizes the precision/recall trade-off for the fraud class.",
+        "A production-grade invoicing SaaS inspired by Xero, built with React/Next.js and TypeScript. The app focuses on clean component architecture, strict typing, and state-driven permissions across the invoice lifecycle (Draft/Sent/Paid). It supports invoice generation with customizable templates and live preview, and integrates with Supabase for authentication and data storage.",
 
       repos: {
-        be: "https://github.com/NRicky25/anomaly-detector",
-        fe: "https://github.com/NRicky25/anomaly-frontend", // add later if you create a frontend
+        fe: "Repository is private during active development. I can provide read-only access on request.",
       },
-
-      duration: "Part-time (evenings/weekends): 6–8 weeks",
 
       sections: [
         {
           heading: "Approach",
           bullets: [
             {
-              text: "Planning & Problem Framing",
+              text: "Planning & Product Goals",
               sub: [
-                "Defined the goal: detect fraudulent transactions with high recall while keeping precision practical for review teams",
-                "Identified constraints: severe class imbalance, limited interpretability, need for real-time inference",
+                "Designed an MVP around real invoicing workflows: dashboard → invoice view → create/edit → send → read-only states",
+                "Prioritized low-click UX, predictable UI behavior, and clear permission boundaries over unnecessary complexity",
+                "Defined invoice lifecycle states (Draft / Sent / Paid) as the source of truth for UI editing rules",
               ],
             },
             {
-              text: "Data Preparation",
+              text: "Frontend Architecture",
               sub: [
-                "Loaded the public credit-card dataset; separated train/validation/test splits",
-                "Scaled key features (Amount, Time) and preserved the anonymized V1–V28 components as-is",
-                "Applied stratified splits to maintain class ratios across sets",
+                "Built a component-driven UI with reusable building blocks (invoice header, line items, totals, status actions)",
+                "Implemented strict TypeScript types across invoices, contacts, items, and totals to reduce runtime edge cases",
+                "Used design-system patterns for consistent spacing, typography, and form controls",
               ],
             },
             {
-              text: "Modeling",
+              text: "Invoice Generation & Templates",
               sub: [
-                "Started with baseline (Logistic Regression) → moved to RandomForest for non-linear boundaries",
-                "Handled imbalance with class_weight and careful cross-validation",
-                "Tracked metrics beyond accuracy: ROC-AUC, PR-AUC, Precision/Recall/F1 on the fraud class",
+                "Implemented invoice generation using template-based layouts with a clear separation between editable form state and rendered output",
+                "Added custom template support (branding, layout variations) to allow different invoice styles per organization",
+                "Built an invoice preview flow so users can review the final output before sending or exporting",
               ],
             },
             {
-              text: "Threshold Tuning",
+              text: "Backend & Data Model",
               sub: [
-                "Optimized the decision threshold for the fraud class (maximize F1 while guarding precision)",
-                "Validated the chosen threshold on a hold-out set to avoid optimistic bias",
+                "Integrated Supabase authentication and multi-tenant data access patterns",
+                "Modeled core entities: contacts, invoices, invoice_lines, templates/branding, and status transitions",
+                "Implemented API integration with robust loading, error, and empty-state handling in the UI",
               ],
             },
             {
-              text: "API & Contracts",
+              text: "Quality & Deployment",
               sub: [
-                "Exported the trained model + scalers with joblib",
-                "Designed FastAPI schemas (Pydantic) for single/batch prediction with strict validation",
-                "Exposed `/predict` and documented with Swagger UI & ReDoc",
-              ],
-            },
-            {
-              text: "Packaging & Deployment",
-              sub: [
-                "Containerized the service with Docker for reproducible local and cloud runs",
-                "Environment-driven config for thresholds, model paths, and log levels",
-              ],
-            },
-            {
-              text: "Testing & QA",
-              sub: [
-                "Smoke tests for API routes and schema errors (invalid/missing fields)",
-                "Metric checks to ensure degradation doesn’t slip through (spot-check F1/precision/recall)",
-              ],
-            },
-            {
-              text: "Monitoring & Next Steps",
-              sub: [
-                "Baseline logging for predictions and errors; plan for drift checks on score distributions",
-                "Future: model retraining pipeline, alerting on metric drops, feature importance reports",
-              ],
-            },
-            {
-              text: "Project Duration (Estimate)",
-              sub: [
-                "Part-time (evenings/weekends): 6–8 weeks for MVP (data → model → API → Docker)",
-                "Add 2–4 weeks for monitoring, retraining workflow, and CI hardening",
+                "Validated key workflows end-to-end (create invoice, edit draft, lock sent invoices, template preview, status changes)",
+                "Kept changes reviewable by following existing patterns and avoiding inline hacks",
               ],
             },
           ],
@@ -303,35 +273,33 @@ export const projects = [
         {
           heading: "Features",
           bullets: [
-            "Prediction API: FastAPI endpoints for single & batch scoring",
-            "Interactive Docs: Swagger UI (/docs) and ReDoc (/redoc)",
-            "Model Artifacts: joblib-exported model and scalers",
-            "Threshold Tuning: calibrated decision threshold for fraud class",
-            "Validation: Pydantic schemas with robust error responses",
-            "Containerization: Docker image for easy run/deploy",
-            "CI: optional GitHub Actions for lint/build/test",
+            "Invoice lifecycle states: Draft / Sent / Paid with edit-permission boundaries",
+            "Invoice generation with customizable templates and branding",
+            "Invoice preview before export/send",
+            "Reusable UI components (header, line items, totals, actions)",
+            "Contact management and invoice creation workflows",
+            "API integration with clean async state (loading/error/empty states)",
+            "Multi-tenant authentication and secure data separation (Supabase)",
+            "Responsive UI with a consistent design system approach",
           ],
         },
       ],
 
       tools: [
-        "Python 3.10",
-        "scikit-learn",
-        "pandas",
-        "numpy",
-        "joblib",
-        "FastAPI",
-        "uvicorn",
-        "pydantic",
-        "Docker",
+        "React",
+        "Next.js",
+        "TypeScript",
+        "MUI",
+        "Tailwind CSS",
+        "Supabase",
+        "PostgreSQL",
         "Git",
         "GitHub",
-        "Jupyter Notebook",
+        "Netlify",
       ],
-      // Add screenshots if you have them:
-      // gallery: ["/shots/anomaly-1.png","/shots/anomaly-2.png"],
     },
   },
+
   {
     id: 3,
     slug: "retail-data-platform",
@@ -664,6 +632,137 @@ export const projects = [
         "Git",
         "GitHub",
       ],
+    },
+  },
+
+  {
+    id: 6,
+    slug: "anomaly-detector",
+    title: "Anomaly Detection",
+    des: "This project demonstrates an end-to-end Machine Learning solution for detecting fraudulent credit card transactions. It encompasses data preprocessing, model training and optimization, and deployment as a containerized RESTful API. The goal is to identify anomalous transactions that might indicate fraud, leveraging a real-world imbalanced dataset.",
+    img: "/dashboard.png",
+    iconLists: [
+      "/scikit-learn.svg",
+      "/pandas.svg",
+      "/Numpy.svg",
+      "/FastAPI.svg",
+      "/Docker.svg",
+    ],
+    // link: "https://github.com/NRicky25/anomaly-detector.git",
+    link: "/projects/anomaly-detector",
+    details: {
+      brief:
+        "This project detects fraudulent credit card transactions using an end-to-end ML workflow: preprocessing, model training/optimization, and deployment as a containerized REST API. It targets real-world class imbalance and optimizes the precision/recall trade-off for the fraud class.",
+
+      repos: {
+        be: "https://github.com/NRicky25/anomaly-detector",
+        fe: "https://github.com/NRicky25/anomaly-frontend", // add later if you create a frontend
+      },
+
+      duration: "Part-time (evenings/weekends): 6–8 weeks",
+
+      sections: [
+        {
+          heading: "Approach",
+          bullets: [
+            {
+              text: "Planning & Problem Framing",
+              sub: [
+                "Defined the goal: detect fraudulent transactions with high recall while keeping precision practical for review teams",
+                "Identified constraints: severe class imbalance, limited interpretability, need for real-time inference",
+              ],
+            },
+            {
+              text: "Data Preparation",
+              sub: [
+                "Loaded the public credit-card dataset; separated train/validation/test splits",
+                "Scaled key features (Amount, Time) and preserved the anonymized V1–V28 components as-is",
+                "Applied stratified splits to maintain class ratios across sets",
+              ],
+            },
+            {
+              text: "Modeling",
+              sub: [
+                "Started with baseline (Logistic Regression) → moved to RandomForest for non-linear boundaries",
+                "Handled imbalance with class_weight and careful cross-validation",
+                "Tracked metrics beyond accuracy: ROC-AUC, PR-AUC, Precision/Recall/F1 on the fraud class",
+              ],
+            },
+            {
+              text: "Threshold Tuning",
+              sub: [
+                "Optimized the decision threshold for the fraud class (maximize F1 while guarding precision)",
+                "Validated the chosen threshold on a hold-out set to avoid optimistic bias",
+              ],
+            },
+            {
+              text: "API & Contracts",
+              sub: [
+                "Exported the trained model + scalers with joblib",
+                "Designed FastAPI schemas (Pydantic) for single/batch prediction with strict validation",
+                "Exposed `/predict` and documented with Swagger UI & ReDoc",
+              ],
+            },
+            {
+              text: "Packaging & Deployment",
+              sub: [
+                "Containerized the service with Docker for reproducible local and cloud runs",
+                "Environment-driven config for thresholds, model paths, and log levels",
+              ],
+            },
+            {
+              text: "Testing & QA",
+              sub: [
+                "Smoke tests for API routes and schema errors (invalid/missing fields)",
+                "Metric checks to ensure degradation doesn’t slip through (spot-check F1/precision/recall)",
+              ],
+            },
+            {
+              text: "Monitoring & Next Steps",
+              sub: [
+                "Baseline logging for predictions and errors; plan for drift checks on score distributions",
+                "Future: model retraining pipeline, alerting on metric drops, feature importance reports",
+              ],
+            },
+            {
+              text: "Project Duration (Estimate)",
+              sub: [
+                "Part-time (evenings/weekends): 6–8 weeks for MVP (data → model → API → Docker)",
+                "Add 2–4 weeks for monitoring, retraining workflow, and CI hardening",
+              ],
+            },
+          ],
+        },
+        {
+          heading: "Features",
+          bullets: [
+            "Prediction API: FastAPI endpoints for single & batch scoring",
+            "Interactive Docs: Swagger UI (/docs) and ReDoc (/redoc)",
+            "Model Artifacts: joblib-exported model and scalers",
+            "Threshold Tuning: calibrated decision threshold for fraud class",
+            "Validation: Pydantic schemas with robust error responses",
+            "Containerization: Docker image for easy run/deploy",
+            "CI: optional GitHub Actions for lint/build/test",
+          ],
+        },
+      ],
+
+      tools: [
+        "Python 3.10",
+        "scikit-learn",
+        "pandas",
+        "numpy",
+        "joblib",
+        "FastAPI",
+        "uvicorn",
+        "pydantic",
+        "Docker",
+        "Git",
+        "GitHub",
+        "Jupyter Notebook",
+      ],
+      // Add screenshots if you have them:
+      // gallery: ["/shots/anomaly-1.png","/shots/anomaly-2.png"],
     },
   },
 ];
