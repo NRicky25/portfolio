@@ -1,4 +1,6 @@
 import React from "react";
+import Link from "next/link";
+import { FaLocationArrow } from "react-icons/fa6";
 import { TextGenerateEffect } from "./ui/text-generate-effect";
 import { AuroraBackground } from "./ui/aurora-background";
 
@@ -18,6 +20,12 @@ const Hero = () => {
               backends with FastAPI, crafting smart solutions with machine
               learning, and delivering modern web experiences.
             </p>
+            <Link href="#projects" className="mt-2">
+              <button className="flex items-center gap-2 px-6 py-3 rounded-lg bg-yellow-100 text-black-100 font-medium hover:opacity-90 transition-opacity">
+                View my work
+                <FaLocationArrow />
+              </button>
+            </Link>
           </div>
         </div>
       </AuroraBackground>

@@ -46,7 +46,7 @@ export const gridItems = [
 
   {
     id: 5,
-    title: "Currently working as Backend Developer at Millionyse",
+    title: "Currently working as Full Stack Developer at Millionyse",
     description: "",
     imgClassName: "absolute right-0 bottom-0 md:w-96 w-60",
     titleClassName: "justify-center md:justify-start lg:justify-center",
@@ -771,7 +771,7 @@ export const workExperience = [
   {
     id: 1,
     date: "September 2025 - Present",
-    title: "Backend Developer",
+    title: "Full Stack Developer",
     company: "Millionyse",
     desc: "Developing and maintaining backend services and APIs using FastAPI, ensuring secure data handling and smooth integration with the frontend.",
     className: "md:col-span-2",

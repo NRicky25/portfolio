@@ -21,14 +21,7 @@ const RecentProjects = () => {
             key={item.id}
           >
             <PinContainer title={item.link} href={item.link}>
-              <div className="relative flex items-center justify-center sm:w-96 w-[80vw] overflow-hidden h-[20vh] lg:h-[30vh] mb-10 rounded-2xl">
-                {/* background layer */}
-                <div
-                  className="absolute inset-0 bg-[#13162D]"
-                  aria-hidden="true"
-                />
-
-                {/* project image */}
+              <div className="relative flex items-center justify-center sm:w-96 w-[80vw] overflow-hidden h-[20vh] lg:h-[30vh] mb-10 rounded-2xl bg-[#13162D]">
                 <Image
                   src={item.img}
                   alt={`${item.title} cover`}
@@ -39,7 +32,7 @@ const RecentProjects = () => {
               </div>
 
               {/* Title */}
-              <h1 className="font-bold lg:text-2xl md:text-xl text-base line-clamp-1">
+              <h1 className="font-bold lg:text-2xl md:text-xl text-base line-clamp-2">
                 {item.title}
               </h1>
 
