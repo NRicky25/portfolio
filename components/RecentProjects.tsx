@@ -32,7 +32,7 @@ const RecentProjects = () => {
               </div>
 
               {/* Title */}
-              <h1 className="font-bold lg:text-2xl md:text-xl text-base line-clamp-2">
+              <h1 className="font-bold lg:text-2xl md:text-xl text-base line-clamp-2 min-h-[3rem] md:min-h-[3.5rem] lg:min-h-[4rem]">
                 {item.title}
               </h1>
 

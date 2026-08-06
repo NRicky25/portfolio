@@ -20,7 +20,7 @@ export async function generateMetadata({
     openGraph: {
       title: proj.title,
       description: proj.des,
-      images: [{ url: "/api/og?title=" + encodeURIComponent(proj.title) }],
+      images: [{ url: proj.img }],
     },
   };
 }

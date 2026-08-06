@@ -813,11 +813,6 @@ export const socialMedia = [
     url: "https://github.com/NRicky25", // GitHub URL
   },
   {
-    id: 2,
-    img: "/twit-x.svg",
-    url: "https://x.com/home", // Twitter URL
-  },
-  {
     id: 3,
     img: "/link.svg",
     url: "https://www.linkedin.com/in/kengeang-kang/",

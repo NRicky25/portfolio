@@ -16,8 +16,11 @@ const geistMono = localFont({
   display: "swap",
 });
 
+// TODO: set NEXT_PUBLIC_SITE_URL once a real domain exists (e.g. in Vercel env vars)
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://your-domain.com"),
+  metadataBase: new URL(siteUrl),
   title: {
     default: "Ricky – Developer",
     template: "%s · Ricky",
@@ -26,16 +29,13 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
-    url: "https://your-domain.com",
+    url: "/",
     title: "Ricky – Developer",
     description: "Portfolio: Next.js, FastAPI, dbt, ML, and cloud projects.",
-    images: [
-      { url: "/api/og?title=Ricky%20Portfolio", width: 1200, height: 630 },
-    ],
+    images: [{ url: "/portfolio.png", width: 2540, height: 1226 }],
   },
   twitter: {
     card: "summary_large_image",
-    site: "@your_handle", // ← optional: set your handle
   },
   icons: {
     icon: [
